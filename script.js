@@ -1,8 +1,8 @@
 ﻿/* ============================================
-   涓滄柟涓汉涓婚〉 - 涓昏浜や簰鑴氭湰
+   东方个人主页 - 主要交互脚本
    ============================================ */
 
-// 閰嶇疆瀵硅薄
+// 配置对象
 const CONFIG = window.SITE_CONFIG || {
     username: 'torvalds',
     signature: '✨ 欢迎来到幻想乡 ✨',
@@ -10,7 +10,7 @@ const CONFIG = window.SITE_CONFIG || {
     telegram: 'https://t.me/example',
     steam: 'https://steamcommunity.com/profiles/example',
     github: 'https://github.com/example',
-    avatarUrl: null // 濡傛灉涓簄ull锛屼娇鐢℅itHub澶村儚
+    avatarUrl: null // 如果为null，使用GitHub头像
 };
 
 // 状态数据
@@ -47,31 +47,31 @@ function createInitialState() {
 // 鍒濆鍖?// ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('馃尭 涓滄柟涓汉涓婚〉姝ｅ湪鍔犺浇...');
+    console.log('🌸 东方个人主页正在加载...');
 
     // 初始化特效
     initParticles();
     initCursorGlow();
     initBackground();
 
-    // 鏇存柊閰嶇疆淇℃伅
+    // 更新配置信息
     updateUserInfo();
 
-    // 鏇存柊绀句氦閾炬帴
+    // 更新社交链接
     updateSocialLinks();
 
     // 关闭卡片滑动联动，保留静态布局
     initWallpaperToggle();
 
-    // 鑾峰彇骞舵樉绀篏itHub鏁版嵁
+    // 获取并显示GitHub数据
     await fetchGitHubData();
 
-    // 浜嬩欢鐩戝惉
+    // 事件监听
     setupEventListeners();
 });
 
 // ============================================
-// 1. 绮掑瓙绯荤粺 - 妯辫姳椋樿惤
+// 1. 粒子系统 - 樱花飘落
 // ============================================
 
 function initParticles() {
@@ -82,7 +82,7 @@ function initParticles() {
 
     const ctx = canvas.getContext('2d');
 
-    // 璁剧疆canvas澶у皬
+    // 设置canvas大小
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -118,10 +118,10 @@ function initParticles() {
             this.x += this.speedX;
             this.rotation += this.rotationSpeed;
 
-            // 椋庣殑褰卞搷
+            // 风的影响
             this.speedX += windEffect;
 
-            // 閲嶇疆绮掑瓙浣嶇疆
+            // 重置粒子位置
             if (this.y > canvas.height) {
                 this.y = -10;
                 this.x = Math.random() * canvas.width;
@@ -174,7 +174,7 @@ function initParticles() {
         });
     }
 
-    // 鍒涘缓绮掑瓙鏁扮粍
+    // 创建粒子数组
     const particles = [];
     const cpuCores = navigator.hardwareConcurrency || 4;
     const particleCountBase = Math.floor(window.innerWidth / 90);
@@ -211,7 +211,7 @@ function initParticles() {
 }
 
 // ============================================
-// 2. 榧犳爣璺熻釜鍏夌偣
+// 2. 鼠标跟踪光点
 // ============================================
 
 function initCursorGlow() {
@@ -282,7 +282,7 @@ function initCursorGlow() {
     });
 }
 
-// 鍒涘缓榄旀硶鐗规晥
+// 创建魔法特效
 function createMagicEffect(x, y) {
     for (let i = 0; i < 6; i++) {
         const angle = (Math.PI * 2 * i) / 6;
@@ -303,7 +303,7 @@ function createMagicEffect(x, y) {
 }
 
 // ============================================
-// 3. 鐢ㄦ埛淇℃伅鏇存柊
+// 3. 用户信息更新
 // ============================================
 
 function updateUserInfo() {
@@ -314,19 +314,19 @@ function updateUserInfo() {
     if (usernameDisplay) usernameDisplay.textContent = CONFIG.username;
     if (signatureDisplay) signatureDisplay.textContent = CONFIG.signature;
 
-    // 璁剧疆澶村儚URL
+    // 设置头像URL
     if (avatar) {
         if (CONFIG.avatarUrl) {
             avatar.src = CONFIG.avatarUrl;
         } else {
-            // 浣跨敤GitHub澶村儚
+            // 使用GitHub头像
             avatar.src = `https://github.com/${CONFIG.username}.png`;
         }
     }
 }
 
 // ============================================
-// 4. 绀句氦閾炬帴鏇存柊
+// 4. 社交链接更新
 // ============================================
 
 function updateSocialLinks() {
@@ -347,7 +347,7 @@ function updateSocialLinks() {
 }
 
 // ============================================
-// 3.5 鑳屾櫙鍥惧垵濮嬪寲
+// 3.5 背景图初始化
 // ============================================
 
 function initBackground() {
@@ -384,13 +384,14 @@ function initBackground() {
 async function fetchGitHubData() {
     try {
         appState.loading = true;
-        console.log(`正在获取 ${CONFIG.username} 的 GitHub 数据...`);
+        console.log(`🔍 正在获取 ${CONFIG.username} 的GitHub数据...`);
 
         const cached = localStorage.getItem(`github-${CONFIG.username}`);
         if (cached) {
             const cacheData = JSON.parse(cached);
             const now = Date.now();
             if (now - cacheData.timestamp < GITHUB_CACHE_DURATION_MS) {
+                console.log('📦 使用缓存数据');
                 appState = { ...appState, ...cacheData.data };
                 renderGitHubData();
                 return;
@@ -445,7 +446,7 @@ function renderStats() {
         { elem: document.getElementById('followers-count'), value: appState.user.followers }
     ];
 
-    // 璁＄畻鎬绘槦鏍囨暟
+    // 计算总星标数
     const totalStars = appState.repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
     const starsElem = document.getElementById('stars-count');
     if (starsElem) starsElem.textContent = totalStars;
@@ -472,7 +473,7 @@ function renderProjects() {
         const card = createProjectCard(repo);
         fragment.appendChild(card);
 
-        // 娣诲姞鍔ㄧ敾寤惰繜
+        // 添加动画延迟
         card.style.animation = `fade-in 0.6s ease-out ${index * 0.1}s both`;
     });
     container.appendChild(fragment);
@@ -764,7 +765,7 @@ function showErrorMessage(message) {
 }
 
 // ============================================
-// 8. 浜嬩欢鐩戝惉
+// 8. 事件监听
 // ============================================
 
 function setupEventListeners() {
@@ -783,7 +784,7 @@ function setupEventListeners() {
         }
     });
 
-    // 鍒锋柊鎸夐挳锛堝彲閫夛級
+    // 刷新按钮（可选）
     window.refreshData = async () => {
         localStorage.removeItem(`github-${CONFIG.username}`);
         appState = createInitialState();
@@ -800,10 +801,11 @@ function initWallpaperToggle() {
         toggle.id = 'wallpaper-toggle';
         toggle.className = 'wallpaper-toggle';
         toggle.type = 'button';
-        footer.appendChild(toggle);
+        document.body.appendChild(toggle);
     }
-    toggle.textContent = '壁纸模式';
+    toggle.textContent = '📸';
     toggle.setAttribute('aria-pressed', 'false');
+    toggle.title = '壁纸模式';
 }
 
 function setCardsHidden(hidden) {
@@ -811,8 +813,9 @@ function setCardsHidden(hidden) {
     document.body.classList.toggle('wallpaper-only', hidden);
     const toggle = document.getElementById('wallpaper-toggle');
     if (toggle) {
-        toggle.textContent = hidden ? '退出壁纸模式' : '壁纸模式';
+        toggle.textContent = hidden ? '❌' : '📸';
         toggle.setAttribute('aria-pressed', hidden ? 'true' : 'false');
+        toggle.title = hidden ? '退出壁纸模式' : '壁纸模式';
     }
 }
 
@@ -838,21 +841,22 @@ function createRipple(element, event) {
 // 9. 鍝嶅簲寮忓鐞?// ============================================
 
 window.addEventListener('resize', () => {
-    // 鍝嶅簲寮忓竷灞€浼氶€氳繃CSS濯掍綋鏌ヨ澶勭悊
+    // 响应式布局会通过CSS媒体查询处理
 });
 
 // ============================================
-// 10. 鎬ц兘浼樺寲
+// 10. 性能优化
 // ============================================
 
 // 浣跨敤Request Animation Frame杩涜浼樺寲
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
-        // 棰勫姞杞戒紭鍖?        console.log('馃尭 椤甸潰宸插畬鍏ㄥ姞杞藉苟浼樺寲');
+        // 预加载优化
+        console.log('页面已完全加载并优化');
     });
 }
 
-console.log('%c✨ 个人主页已启动 ✨', 'color: #9FE870; font-size: 14px; font-weight: bold;');
+console.log('%c✨ 东方幻想乡个人主页已启动 ✨', 'color: #9FE870; font-size: 14px; font-weight: bold;');
 
 
 
