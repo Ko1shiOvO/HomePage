@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 | 东方幻想乡</title>
+    <link rel="icon" type="image/png" href="https://github.com/Ko1shiOvO.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <!-- 背景粒子效果容器 -->
+    <div class="background-container">
+        <div class="bg-image"></div>
+        <canvas id="particle-canvas"></canvas>
+        <div class="bg-gradient"></div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="avatar-wrapper">
+                    <img id="avatar" src="https://github.com/identicons/default.png" alt="Avatar" class="avatar">
+                    <div class="avatar-glow"></div>
+                </div>
+                <div class="header-text">
+                    <h1 id="username-display" class="name">Touhou Traveler</h1>
+                    <p id="signature-display" class="signature">✨ 漂浮于幻想乡的开发者 ✨</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="main-grid">
+                <div class="left-column">
+            <!-- GitHub 统计卡片 -->
+            <section class="stats-section">
+                <h2 class="section-title">📊 GitHub 统计</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-info">
+                            <span class="stat-label">仓库</span>
+                            <span id="repos-count" class="stat-number">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <span class="stat-label">星标</span>
+                            <span id="stars-count" class="stat-number">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <span class="stat-label">粉丝</span>
+                            <span id="followers-count" class="stat-number">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GitHub 活动概览 -->
+            <section class="activity-section">
+                <h2 class="section-title">📈 GitHub 活动概览</h2>
+                <div id="activity-container" class="activity-heatmap-shell">
+                    <div class="activity-skeleton">
+                        <div class="skeleton-circle"></div>
+                        <div class="skeleton-line"></div>
+                    </div>
+                    <div class="activity-skeleton">
+                        <div class="skeleton-circle"></div>
+                        <div class="skeleton-line"></div>
+                    </div>
+                    <div class="activity-skeleton">
+                        <div class="skeleton-circle"></div>
+                        <div class="skeleton-line"></div>
+                    </div>
+                </div>
+            </section>
+                </div>
+                <div class="right-column">
+
+            <!-- 最近项目 -->
+            <section class="projects-section">
+                <h2 class="section-title">✨ 最近项目</h2>
+                <div id="projects-container" class="projects-grid">
+                    <div class="card-skeleton">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line" style="width: 80%;"></div>
+                    </div>
+                    <div class="card-skeleton">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line" style="width: 80%;"></div>
+                    </div>
+                    <div class="card-skeleton">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </section>
+
+                </div>
+            </div>
+
+            <!-- 社交联系 -->
+            <section class="contact-section">
+                <h2 class="section-title">🌐 联系我</h2>
+                <div class="contact-container">
+                    <a href="https://discord.gg/example" class="contact-card discord" title="Discord">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.317 4.3671a19.8 19.8 0 0 0-4.8851-1.5152.074.074 0 0 0-.0784.0371c-.211.3751-.4447.8648-.6083 1.2524-1.8289-.2759-3.6497-.2759-5.4581 0-.1636-.3876-.3975-.8773-.6084-1.2524a.077.077 0 0 0-.0785-.037 19.7344 19.7344 0 0 0-4.8852 1.515.07.07 0 0 0-.0329.0318c-3.0923 4.6231-3.9464 9.1410-3.5264 13.5911a.08.08 0 0 0 .0319.0552 19.9078 19.9078 0 0 0 5.9949 3.0294.0766.0766 0 0 0 .0833-.0271c.461-.6304.8697-1.2952 1.2171-1.9888a.076.076 0 0 0-.0419-.1064 13.1955 13.1955 0 0 1-1.9181-.9147.077.077 0 0 1-.0076-.1277c.1291-.0972.2584-.1982.3826-.306a.074.074 0 0 1 .0777-.0103 14.1494 14.1494 0 0 0 12.0612 0 .073.073 0 0 1 .0787.0093c.1242.1078.2535.2086.3826.306a.077.077 0 0 1-.0076.1277 13.1367 13.1367 0 0 1-1.9181.9147.0766.0766 0 0 0-.0419.1064c.3474.6936.7561 1.3584 1.2171 1.9888a.076.076 0 0 0 .0833.0271 19.8628 19.8628 0 0 0 5.9949-3.0294.077.077 0 0 0 .0319-.0552c.4765-4.4446-.7997-8.3040-3.3856-11.7416a.07.07 0 0 0-.0319-.0319zM8.02 15.3312c-.9887 0-1.7979-.9062-1.7979-2.0148 0-1.1086.7892-2.0147 1.7979-2.0147.9975 0 1.7979.9061 1.7979 2.0147 0 1.1086-.7884 2.0148-1.7979 2.0148zm7.9611 0c-.9887 0-1.7979-.9062-1.7979-2.0148 0-1.1086.7892-2.0147 1.7979-2.0147.9975 0 1.7979.9061 1.7979 2.0147 0 1.1086-.7892 2.0148-1.7979 2.0148z"/>
+                        </svg>
+                        <span>Discord</span>
+                    </a>
+                    <a href="https://t.me/example" class="contact-card telegram" title="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12s12-5.372 12-12c0-6.627-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295-.042 0-.084 0-.126-.01l.214-3.054 5.56-5.023c.242-.213-.054-.328-.373-.115l-6.869 4.332-2.97-.924c-.644-.203-.658-.643.135-.953l11.593-4.469c.538-.196 1.006.128.832.941z"/>
+                        </svg>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="https://steamcommunity.com/profiles/example" class="contact-card steam" title="Steam">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8.21 17.32 7 16.8a2.13 2.13 0 1 0 1.17-2.93l1.28.53a1.58 1.58 0 0 1-1.22 2.92z"/><path d="M12 2a10 10 0 0 0-10 9.34l5.38 2.21a2.3 2.3 0 0 1 .47-.24A2.6 2.6 0 0 1 9 13.1l2.44-3.56a3.8 3.8 0 1 1 3.8 3.8h-.08l-3.51 2.5a2.77 2.77 0 0 1-5.47.68l-3.77-1.6A10 10 0 1 0 12 2"/><path d="M17.79 9.5a2.53 2.53 0 1 0-2.53 2.5 2.54 2.54 0 0 0 2.53-2.5m-4.42 0a1.9 1.9 0 1 1 1.9 1.91 1.9 1.9 0 0 1-1.9-1.92z"/>
+                        </svg>
+                        <span>Steam</span>
+                    </a>
+                    <a href="https://github.com/example" class="contact-card github" title="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>✨ 欢迎来到幻想乡 ✨ | 由 Claude Code 用爱构建 ❤️</p>
+            <button id="wallpaper-toggle" class="wallpaper-toggle" type="button">壁纸模式</button>
+        </footer>
+    </div>
+
+    <!-- 配置文件 -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
