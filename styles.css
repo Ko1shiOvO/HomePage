@@ -654,10 +654,6 @@ body.wallpaper-only .footer p {
     color: #66c0f4;
 }
 
-.contact-card.steam svg {
-    transform: scale(1.16);
-}
-
 .contact-card.github:hover {
     border-color: #ffffff;
     color: #ffffff;
