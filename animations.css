@@ -213,9 +213,7 @@ body {
     animation: text-glow 2s ease-in-out infinite;
 }
 
-/* ============================================
-   杈规婊戝姩鏁堟灉
-   ============================================ */
+
 
 @keyframes border-glow {
     0% {
@@ -253,8 +251,7 @@ body {
     animation: pulse-scale 2s ease-in-out infinite;
 }
 
-/* ============================================
-   鎵弿绾挎晥鏋?   ============================================ */
+
 
 @keyframes scan-line {
     from {
@@ -328,9 +325,7 @@ body {
     animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
 }
 
-/* ============================================
-   鏄熸槦闂儊
-   ============================================ */
+
 
 @keyframes star-blink {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
@@ -345,8 +340,7 @@ body {
     animation: star-blink 3s ease-in-out infinite;
 }
 
-/* ============================================
-   杩涘害鏉″～鍏?   ============================================ */
+
 
 @keyframes fill {
     0% {
@@ -361,25 +355,6 @@ body {
     height: 3px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     animation: fill 1s ease-out forwards;
-}
-
-/* ============================================
-   鼠标跟踪光点
-   ============================================ */
-
-.cursor-glow {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.14), rgba(115, 209, 96, 0.04) 60%, transparent 72%);
-    border: 1px solid rgba(115, 209, 96, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 2147483647;
-    box-shadow: 0 0 10px rgba(115, 209, 96, 0.2);
-    transform: translate3d(-100px, -100px, 0);
-    will-change: transform;
-    opacity: 0.95;
 }
 
 /* ============================================
@@ -399,8 +374,7 @@ body {
     animation: rainbow 10s linear infinite;
 }
 
-/* ============================================
-   鍊掕鏃剁垎鐐?   ============================================ */
+
 
 @keyframes countdown-pulse {
     0%, 100% {
@@ -465,9 +439,7 @@ body {
     font-size: 2rem;
 }
 
-/* ============================================
-   鑷畾涔夋粴鍔ㄦ潯
-   ============================================ */
+
 
 ::-webkit-scrollbar {
     width: 10px;

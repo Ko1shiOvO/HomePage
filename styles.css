@@ -263,9 +263,7 @@ body {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
-/* ============================================
-   缁熻鍗＄墖
-   ============================================ */
+
 
 .stats-section {
     position: static;
@@ -638,7 +636,7 @@ body.wallpaper-only .footer p {
     filter: drop-shadow(0 0 10px currentColor);
 }
 
-/* 鍚勭ぞ浜ゅ钩鍙伴鑹?*/
+
 .contact-card.discord:hover {
     border-color: #5865F2;
     color: #5865F2;
@@ -659,9 +657,10 @@ body.wallpaper-only .footer p {
     color: #ffffff;
 }
 
-/* ============================================
-   鏍囬鏍峰紡
-   ============================================ */
+.contact-card.steam svg {
+    width: 48px;
+    height: 48px;
+}
 
 .section-title {
     font-size: 1.4rem;
@@ -754,8 +753,7 @@ body.wallpaper-only .footer p {
     -webkit-backdrop-filter: blur(var(--glassmorphism-blur));
 }
 
-/* ============================================
-   鍝嶅簲寮忚璁?   ============================================ */
+
 
 @media (max-width: 768px) {
     .container {
@@ -828,8 +826,8 @@ body.wallpaper-only .footer p {
     }
 }
 
-/* ============================================
-   鏃犻殰纰嶈闂?   ============================================ */
+
+
 
 @media (prefers-reduced-motion: reduce) {
     * {
